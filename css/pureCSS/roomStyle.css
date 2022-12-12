@@ -1,0 +1,501 @@
+/*** shadow & light *********************************************************************************/
+
+.house .h-shadow {background:#000;}
+.house .h-light:nth-of-type(1) {background:radial-gradient(#1b182a,transparent);filter:blur(1vmin);}
+.house .h-light:nth-of-type(2) {background:radial-gradient(#5189fb73 50%,#287dd273,transparent);box-shadow:-1vmin -1vmin 2vmin 1vmin #83abfc1a;filter:blur(1vmin);}
+.house .h-light:nth-of-type(3) {background:radial-gradient(#5189fb80 50%,#287dd280,transparent);filter:blur(2vmin);}
+.house .h-light:nth-of-type(4) {background:linear-gradient(to right,#5189fb13 10%,transparent 25%,transparent,#00000026);filter:blur(0.25vmin);}
+.house .h-light:nth-of-type(6) {background:linear-gradient(to left,#0000001a,#000000b3);filter:blur(0.35vmin);}
+
+.house .h-light:nth-of-type(3)::before,
+.house .h-light:nth-of-type(3)::after {background:linear-gradient(to bottom,#287dd21a,#5189fb1a,transparent);border-top-left-radius:10vmin;border-top-right-radius:10vmin;filter:blur(1.5vmin);}
+.house .h-light:nth-of-type(3)::before {box-shadow:-2vmin -2vmin 0 #5189fb13;}
+.house .h-light:nth-of-type(3)::after {box-shadow:2vmin -2vmin 0 #5189fb13;}
+
+/*** shadow & light *********************************************************************************/
+
+/*** Structure **************************************************************************************/
+
+.house .face {--out-btm:#333;--out-lft:#555;--out-bck:#777;}
+.house *::before ,.house *::after {
+    box-sizing:border-box;
+    --light-blue-11:#5189fb;--light-blue-12:#5189fb33;--light-blue-13:#5189fb40;--light-blue-14:#5189fb59;
+    --light-blue-15:#5189fb66;--light-blue-16:#5189fb99;--light-blue-17:#5189fbd9;--light-blue-18:#5189fbf2;
+    --light-blue-21:#287dd226;--light-blue-22:#287dd240;--light-blue-23:#287dd250;
+    --light-blue-24:#287dd259;--light-blue-25:#287dd280;
+
+    --light-phone-tablet-01:#184a7cbf;
+    --light-shelf-01:#064ee0bf;
+    --light-shelf-02:#1f68f9bf;
+    --light-shelf-03:#6a9afbb3;
+    --light-shelf-04:#2063a799;
+
+    /* light */
+    --light-yellow-1:#ffc40020;--light-yellow-2:#ff8c0058;
+    --light-tv-1:#f9f9f969;--light-tv-2:#ffffff84;
+
+    --light-11:#ffffff53;--light-12:#ffffff8c;--light-13:#ffffffbf;
+
+    /* shadow */
+    --shadow-11:#00000013;--shadow-12:#00000053;--shadow-13:#0000008c;--shadow-14:#000000bf;
+    --shadow-21:#aaaaaa20;--shadow-22:#aaaaaa70;--shadow-23:#aaaaaaca;
+}
+
+/*************** floor ***************/
+
+/* hidden */
+.house .floor .front,
+.house .floor .right {background:transparent;}
+
+/* outside */
+.house .floor .bottom {background:var(--out-btm);}
+.house .floor .left {background:var(--out-lft);}
+.house .floor .back {background:var(--out-bck);}
+
+/* top */
+.house .floor .top {background:#5d534e;}
+
+/*************** wall ****************/
+
+.wall .face {
+    --surface-1:#7c746f;--surface-2:#e2dfd7;--surface-b:#d2baa6;      
+    --section-1:#17395f;--section-2:#102945;--section-3:#0c1f34;--section-4:#0a101a;
+    --surface-top-1:#354661;--surface-top-2:#2b3d5b;--surface-top-3:#15253f;--surface-top-4:#0e1d35;
+}
+
+/* hidden : 겹쳐서 안보이는 면,어느 각에서도 보이지 않음 */
+.house .wall.a-l .right,
+.house .wall.a-r .front,
+.house .wall.b-l .back,
+.house .wall.b-r .left {background:transparent;}
+
+/* outside : 외부,안보이는 면,각도를 돌리면 보임! */
+/* outside - bottom */
+.house .wall.a-l .bottom, .house .wall.a-r .bottom {background:var(--out-btm);}
+
+/* outside - left */
+.house .wall.a-l .left,
+.house .wall.b-l .left,
+.house .wall.b-r .left {background:var(--out-lft);}
+
+/* outside - back */
+.house .wall.a-r .back,
+.house .wall.b-r .back {background:var(--out-bck);}
+
+/* behind; 내부,안보이는 면,각도를 돌리면 보임! */
+.house .wall.a-r .left {background:var(--surface-1);}
+.house .wall.a-l .back {background:var(--surface-2);}
+
+/* section : 단면 */
+/* section - top */
+.house .wall.b-l .top {background:linear-gradient(to top,var(--section-1),var(--section-2));}
+.house .wall.b-r .top {background:linear-gradient(to right,var(--section-2),var(--section-4));}
+/* section - front */
+.house .wall.b-l .front {background:var(--section-3);}
+
+/* section - right */
+.house .wall.b-r .right {background:var(--section-4);}
+
+/* surface : 표면 */
+/* surface - wall.a 외벽 */
+.house .wall.a-l .front {background:linear-gradient(to right,var(--section-1),var(--section-2));}
+.house .wall.a-r .right {background:linear-gradient(to right,var(--section-3),var(--section-4));}
+
+/* surface - wallPaper */
+.house .wall.b-l .right {background:var(--surface-1);}
+.house .wall.b-r .front {background:var(--surface-2);}
+
+/* surface - top */
+.house .wall.a-l .top {background:linear-gradient(to right,var(--surface-top-1),var(--surface-top-2));}
+.house .wall.a-r .top {background:linear-gradient(to top,var(--surface-top-2),var(--surface-top-3));}
+
+/*** Structure **************************************************************************************/
+
+/*** Interiror **************************************************************************************/
+
+/************* partition *************/
+.house .partition .face {--surface-1:#92857f;--ol-1:#524a45;}
+
+/* outline */
+.house .partition .face {background:var(--ol-1);}
+
+/* surface */
+.house .partition .left, .house .partition .right {background:var(--surface-1);}
+
+/* light */
+.house .partition .top::before {background:var(--shadow-11);}
+
+/* shadow */
+.house .partition .right::before {background:linear-gradient(to bottom,transparent 70%,var(--shadow-21));}
+.house .partition .bottom::before {background:linear-gradient(to left,var(--shadow-12),transparent);filter:blur(0.25vmin);}
+
+/*************** door **************/
+.house .door-c {
+    --srfc-door-1:#aea29b;--srfc-door-2:#c2b7ab;
+    --srfc-frame:#7c746f;
+    --ol-frame-1:#bcafa9;--ol-frame-2:#998f8a;
+}
+.house .door .front::before, .house .door .front::after {--surface-knob:#bfbebe;}
+
+/* shadow */
+.house .door-c::before {background:var(--shadow-12);filter:blur(0.5vmin);}
+
+/* door */
+.house .door .front {background:radial-gradient(var(--srfc-door-1),var(--srfc-door-2));}
+
+.house .door .front::after {/* 문고리 */
+    background:var(--surface-knob);
+    border:1px solid var(--shadow-11);
+    
+    box-shadow:
+        0.125vmin 0.125vmin 0.25vmin var(--light-11),
+        -0.125vmin 0.125vmin 0.25vmin var(--light-11),
+        -0.125vmin -0.125vmin 0.25vmin var(--light-11),
+        0.125vmin -0.125vmin 0.25vmin var(--light-11);
+}
+
+/* doorFrame */
+/* hidden */
+.house .doorFrame-l .back, .house .doorFrame-l .bottom,
+.house .doorFrame-r .back, .house .doorFrame-r .bottom,
+.house .doorFrame-t .back, .house .doorFrame-t .left, .house .doorFrame-t .right {background:transparent;}
+
+/* surface - front */
+.house .doorFrame-l .front,
+.house .doorFrame-r .front,
+.house .doorFrame-t .front {background:var(--srfc-frame);}
+
+/* surface - top,outside */
+.house .doorFrame-l .top,
+.house .doorFrame-r .top,
+.house .doorFrame-t .top {background:var(--ol-frame-1);}
+
+.house .doorFrame-l .right,
+.house .doorFrame-r .right {background:var(--ol-frame-2);}
+
+/* surface - inside */
+.house .doorFrame-l .left,
+.house .doorFrame-r .left,
+.house .doorFrame-t .bottom {background:var(--srfc-frame);}
+
+/*************** sofa-c **************/
+.house .sofa-c {--surface-main:#bcafa9;--surface-1:#998f8a;--surface-2:#7c746f;}
+
+/* surface */
+.house .sofa-c .face {background:var(--surface-main);}
+
+/* hidden */
+.house .sofa-c .bottom, 
+.house .sofa-b .back, .house .sofa-b .right, .house .sofa-b .front {background:transparent;}
+
+/* surface - front/back */
+.house .sofa-c div:not(.sofa-b) .front {background:linear-gradient(135deg,var(--surface-main),var(--surface-1));}
+.house .sofa-c div:not(.sofa-b) .back {background:linear-gradient(-135deg,var(--surface-main),var(--surface-1));}
+
+/* surface - right */
+.house .sofa-c div:not(.sofa-b) .right {background:linear-gradient(to bottom,var(--surface-1),var(--surface-2));}
+
+/* light */
+.house .sofa-c div .left::before {background:linear-gradient(to bottom,transparent,var(--shadow-12));}
+.house .sofa-c div .top::before {background:linear-gradient(to right,var(--light-11) 3%,transparent);border-right:1px solid var(--surface-main);}
+
+/* shadow */
+.house .sofa-c::before {background:var(--shadow-12);filter:blur(0.5vmin);}
+
+/*** table ***************************/
+.house .table-c .face {
+    --srfc-plate:#bcafa9;--ol-plate-1:#bcafa9;--ol-plate-2:#b4a9a3;--ol-plate-3:#998f8a;--ol-plate-4:#7c746f;
+    --srfc-leg-1:#8f8274;--srfc-leg-2:#635b53;--srfc-leg-3:#7c746f;
+}
+
+/* hidden */
+.house .table-p .top,
+.house .table-p .bottom {background:transparent;}
+
+/* outline */
+.house .table-t .left {background:var(--ol-plate-1);}
+.house .table-t .front {background:linear-gradient(to right,var(--ol-plate-2),var(--ol-plate-4) 90%,var(--ol-plate-3));}
+.house .table-t .back {background:linear-gradient(to left,var(--ol-plate-2),var(--ol-plate-4) 90%,var(--ol-plate-3));}
+.house .table-t .right {background:var(--ol-plate-4);}
+
+/* surface */
+.house .table-t .top, .house .table-t .bottom {background:linear-gradient(45deg,var(--srfc-plate),var(--srfc-plate));overflow:hidden;}
+
+.house .table-p .left {background:var(--srfc-leg-1);}
+.house .table-p .front, .house .table-p .back {background:var(--srfc-leg-2);}
+.house .table-p .right {background:var(--srfc-leg-3);}
+
+/* light */
+/* .house .table-t .top::before {background:radial-gradient(var(--light-yellow-1) 50%,transparent 90%,var(--shadow-11));filter:blur(0.5vmin);} */
+
+/* shadow */
+.house .table-t .bottom::before,
+.house .table-p .bottom::before {background:var(--shadow-13);filter:blur(0.35vmin);}
+.house .table-shadow {background:#0b0c1fbf;filter:blur(1vmin);}
+
+/*** tv ******************************/
+.house .tv .face {--surface-1:#9cbcfc;--ol-1:#000;}
+
+@keyframes tvLightFromScreen {
+    from {
+        background:var(--light-tv-1);
+        box-shadow:
+            0.125vmin 0.125vmin 0vmin var(--light-tv-1),
+            -0.125vmin 0.125vmin 0vmin var(--light-tv-1),
+            0.125vmin -0.125vmin 0vmin var(--light-tv-1),
+            -0.125vmin -0.125vmin 0vmin var(--light-tv-1);
+    }
+    to {
+        background:var(--light-tv-2);
+        box-shadow:
+            0.125vmin 0.125vmin 1vmin var(--light-tv-2),
+            -0.125vmin 0.125vmin 1vmin var(--light-tv-2),
+            0.125vmin -0.125vmin 1vmin var(--light-tv-2),
+            -0.125vmin -0.125vmin 1vmin var(--light-tv-2);
+    }
+}
+@keyframes tvLightToWall {
+    from {background:radial-gradient(#2470bccc,#3879facc);}
+    to {background:radial-gradient(var(--light-tv-1),var(--light-tv-2));}
+}
+
+/* hidden */
+.house .tv .left {background:transparent;}
+
+/* outline  */
+.house .tv .front, .house .tv .back, .house .tv .top, .house .tv .bottom {background:var(--ol-1);}
+
+/* surface */
+.house .tv .right {
+    background:url(../img/tv.gif);
+    border:calc(var(--leng_X) / 2) solid var(--ol-1);
+    background-size:cover;background-repeat:no-repeat;background-position:center;
+}
+
+/* light */
+.house .tv .right::before {
+    background:var(--light-tv-1);
+    box-shadow:
+        0.125vmin 0.125vmin 1vmin var(--light-tv-1),
+        -0.125vmin 0.125vmin 1vmin var(--light-tv-1),
+        0.125vmin -0.125vmin 1vmin var(--light-tv-1),
+        -0.125vmin -0.125vmin 1vmin var(--light-tv-1);
+    /* animation:tvLightFromScreen 0.3s infinite alternate-reverse; */
+}
+.house .tv .left::before {
+    background:radial-gradient(var(--light-tv-1),var(--light-tv-2));filter:blur(1.25vmin);
+    animation:tvLightToWall 0.3s infinite alternate-reverse;
+}
+ 
+/***** speaker *****/
+.house [class^="speaker"] .face {
+    --surface-1:#333;
+    --ol-1:#b19781;--ol-2:#a88971;--ol-3:#95755b;--ol-4:#7e644e;--ol-5:#5f4b3a;
+}
+
+/* hidden */
+.house .speaker-l .left,
+.house .speaker-r .left {background:transparent;}
+
+/* outline - inside */
+.house .speaker-l .back {background:linear-gradient(to right,var(--ol-1),var(--ol-2));}
+.house .speaker-r .front {background:linear-gradient(to left,var(--ol-1),var(--ol-2));}
+
+/* outline - top */
+.house .speaker-l .top {background:linear-gradient(-135deg,var(--ol-1),var(--ol-3));}
+.house .speaker-r .top {background:linear-gradient(-45deg,var(--ol-1),var(--ol-3));}
+
+/* outline - outside */
+.house .speaker-l .front,
+.house .speaker-r .back {background:var(--ol-4);}
+
+/* outline - bottom */
+.house .speaker-l .bottom,
+.house .speaker-r .bottom  {background:var(--ol-5);}
+
+/* surface */
+.house .speaker-l .right,
+.house .speaker-r .right {background:var(--surface-1);}
+
+/* light */
+.house .speaker-l .back::before {background:linear-gradient(to right,transparent,var(--shadow-12));}
+.house .speaker-r .front::before {background:linear-gradient(to left,transparent,var(--shadow-12));}
+
+/* shadow */
+.house .speaker-l .left::before,
+.house .speaker-r .left::before {background:var(--shadow-12);filter:blur(1vmin);}
+ 
+/*** shelf ***************************/
+.house > [class^="shelf"] > .face {--surface-1:#bcafa9;--ol-1:#7c746f;}
+
+/* hidden */
+.house .shelf-t .left,
+.house .shelf-b .left,
+.house .shelf-r .back {background:transparent;}
+
+/* outline */
+.house .shelf-t .front, .house .shelf-t .back,
+.house .shelf-b .front, .house .shelf-b .back,
+.house .shelf-r .left, .house .shelf-r .right {background:var(--ol-1);}
+
+.house .shelf-t .right,
+.house .shelf-b .right,
+.house .shelf-r .front {background:var(--ol-1);border-right:1px solid var(--surface-1);border-left:1px solid var(--surface-1);}
+
+/* surface */
+.house .shelf-t .top, .house .shelf-t .bottom,
+.house .shelf-b .top, .house .shelf-b .bottom,
+.house .shelf-r .top, .house .shelf-r .bottom {background:var(--surface-1);}
+
+/* light */
+.house .shelf-b .top::before {background:linear-gradient(to right,var(--light-tv-2),transparent,var(--shadow-11));}
+.house .shelf-t .top::before {background:linear-gradient(to right,var(--shadow-11),transparent);}
+.house .shelf-r .top::before {background:linear-gradient(to top,var(--light-yellow-1) 10%,transparent 70%,var(--shadow-11));}
+
+/* shadow */
+.house .shelf-b .left::before,
+.house .shelf-t .left::before,
+.house .shelf-r .back::before {background:linear-gradient(to bottom,var(--shadow-21) 50%,transparent);filter:blur(0.3vmin);}
+
+.house .shelf-t .bottom::before {background:linear-gradient(to left,var(--shadow-13),var(--light-tv-2)20%,var(--shadow-13));}
+.house .shelf-b .bottom::before,
+.house .shelf-r .bottom::before {background:linear-gradient(to top,var(--shadow-11),var(--shadow-13));}
+
+/*** poster **************************/
+.house .poster-l .face,
+.house .poster-r .face {--frame-ol-1:#bcafa9;--frame-ol-2:#998f8a;--frame-ol-f:#7c746f;}
+
+/* hidden */
+.house .poster-l .back,
+.house .poster-r .back {
+    background:transparent;
+    box-shadow:
+        0.35vmin 0.35vmin 0.35vmin var(--light-blue-12),
+        -0.35vmin 0.35vmin 0.35vmin var(--light-blue-12),
+        -0.35vmin -0.35vmin 0.35vmin var(--light-blue-12),
+        0.35vmin -0.35vmin 0.35vmin var(--light-blue-12);
+}
+
+/* surface - frame */
+.house .poster-l .left, .house .poster-l .top,
+.house .poster-r .left, .house .poster-r .top {background:var(--frame-ol-1);}
+
+.house .poster-l .right, .house .poster-l .bottom,
+.house .poster-r .right, .house .poster-r .bottom {background:var(--frame-ol-2);}
+
+/* surface - image */
+#room .poster-l .front {
+    background-image:url(../img/myProfileImg.jpg);
+    background-size:300%;background-position:43% 6%;
+    border:0.7vmin solid var(--frame-ol-f);
+}
+#room .poster-r .front {
+    background-image:url(../img/comong.jpg);
+    background-size:100%;background-position:0 30%;
+    border:0.7vmin solid var(--frame-ol-f);
+}
+
+/* light */
+.house .poster-l .front::before,
+.house .poster-r .front::before {
+    background-origin:padding-box;
+    background:linear-gradient(to bottom,var(--light-blue-21),var(--light-blue-23));
+}
+
+/*** tablet & phone ******************/
+@keyframes deviceLightFromScreen {
+    from {background:var(--light-tv-1);}
+    to {background:var(--light-tv-2);}
+}
+
+.house .tablet .face,
+.house .phone .face {--ol-1:#111f3b;--line-1:#223d74;}
+
+/* hidden */
+.house .tablet .bottom,
+.house .phone .bottom {
+    background:transparent;
+    box-shadow:
+        0.25vmin 0.25vmin 0.5vmin var(--shadow-14),
+        -0.25vmin 0.25vmin 0.5vmin var(--shadow-14),
+        -0.25vmin -0.25vmin 0.5vmin var(--shadow-14),
+        0.25vmin -0.25vmin 0.5vmin var(--shadow-14);
+}
+
+/* outline */
+.house .tablet .face,
+.house .phone .face {background:var(--ol-1);}
+
+/* surface */
+.house .tablet .top, 
+.house .phone .top {background:#74b3c0;border:var(--leng_Z) solid var(--line-1);}
+.house .tablet .top::before, 
+.house .phone .top::before {background:var(--light-tv-1);animation:deviceLightFromScreen 0.45s infinite;}
+/** books ****************************/
+.house .book .face {--cover:#5c5551;--paper:#fdfaed;}
+
+/* surface */
+.house .book .front,.house .book .left,.house .book .right {background:var(--cover);}
+.house .book .back,.house .book .top,.house .book .bottom {background:var(--paper)}
+
+/* shadow */
+/* .house .book .front::before {background:linear-gradient(to bottom,var(--light-11),transparent);} */
+.house .book .left::before, .house .book .right::before {background:linear-gradient(to bottom,var(--light-11),transparent);}
+.house .book .top::before {background:linear-gradient(to top,var(--light-11),transparent);}
+
+/** photos ***************************/
+@keyframes tvLightToPhoto {
+    from {background:linear-gradient(to left,var(--light-tv-1),var(--shadow-11));}
+    to {background:linear-gradient(to left,var(--light-tv-2),var(--shadow-11));}
+}
+
+.house .photo .face {--ol-1:#337acc;--ol-2:#81bbfd;--ol-3:#143152;--ol-4:#1e497b;--surface-1:#2964a8;}
+
+/* hidden */
+.house .photo .bottom {background:transparent;}
+
+/* surface - frame */
+.house .photo .front {background:var(--ol-1);}
+.house .photo .top {background:var(--ol-2);}
+.house .photo .back {background:var(--ol-3);}
+.house .photo .left,
+.house .photo .bottom {background:var(--ol-4);}
+.house .photo .right {border:var(--leng_X) solid var(--surface-1);}
+
+/* surface - photo */
+.house .photo .right::before {background-size:cover;transform:translateZ(calc(- var(--leng_X) / 2));}
+.house .photo:first-of-type .right::before {background-image:url(../img/photo_1_right.gif);}
+.house .photo:last-of-type .right::before {background-image:url(../img/photo_2_right.gif);}
+
+/* light */
+.house .photo .top::before {
+    background:linear-gradient(to left,var(--light-tv-1),var(--shadow-11));
+    animation:tvLightToPhoto 0.3s infinite alternate-reverse;
+}
+
+/* shadow */
+.house .photo .front::before {background:linear-gradient(to right,var(--shadow-12),transparent);}
+.house .photo .back::before {background:linear-gradient(to left,var(--shadow-12),transparent);}
+.house .photo .bottom::before {background:var(--shadow-13);filter:blur(0.15vmin);}
+
+/*** boxes ***************************/
+.house .box .face {--surface-1:#e1e0e6;--surface-2:#c3c1cd;--surface-3:#9a97aa;--surface-4:#928fa3;}
+
+/* hidden */
+.house .box .bottom {background:transparent;}
+
+/* surface */
+.house .box .right {background:var(--surface-1);}
+.house .box .front {background:var(--surface-2);}
+.house .box .top {background:var(--surface-3);}
+.house .box .back, 
+.house .box .left {background:var(--surface-4);}
+
+/* shadow */
+.house .box .top::before {background:linear-gradient(to left,var(--shadow-11) 4%,transparent,var(--shadow-11));}
+.house .box .right::before {background:linear-gradient(to bottom,var(--shadow-11),var(--shadow-12));}
+.house .box .front::before {background:linear-gradient(-135deg,transparent,var(--shadow-12));}
+.house .box .back::before {background:linear-gradient(135deg,transparent,var(--shadow-12));}
+.house .box .bottom::before {background:var(--shadow-12);filter:blur(0.15vmin);}
+
+/**********************/

@@ -1,0 +1,35 @@
+/* Home.css */
+/*** Home ***************************************************************************************/
+#Home {
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+}
+#Home h2 {
+    font-family:'Pacifico',cursive;
+    font-size:10rem;color:#669dc0;
+}
+#Home span {
+    font-family:'Patrick Hand', cursive;
+    font-size:3rem;
+}
+
+/*** Room *******************************************************************************************/
+#room {
+    width:100%;height:100%;overflow:hidden;
+    background:#ffe6bb;
+    display:flex;justify-content:center;align-items:center;
+    cursor:pointer;
+}
+
+#room *,
+#room *::after,
+#room *::before {
+    margin:0;padding:0;
+    box-sizing:border-box;
+    user-select:none;
+    transform-style:preserve-3d;
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* #room #h div .face {display:none;} */
+/* #room #h .photos .face {display:block;} */

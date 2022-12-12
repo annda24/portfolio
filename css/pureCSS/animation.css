@@ -1,0 +1,156 @@
+* {margin:0;padding:0;}
+body {width:100vw;height:100vh;overflow:hidden;}
+/* #css {width:400vw;height:100vmin;} */
+#css {width:100%;height:100%;}
+
+article, article div {position:absolute;}
+
+/* background - back */
+.back {width:100%;height:100%;}
+.back .sky {
+    width:100%;height:100%;
+    background:rgb(191, 238, 255);
+}
+.back .road {
+    bottom:0;
+    width:100%;height:30%;
+    background:rgb(49, 45, 41);
+}
+
+/* cat */
+.cat, .cat div {
+    --main:#000;--pink:pink;
+    --w-cat:30vmin;--h-cat:20vmin;
+    --w-head:calc(var(--h-cat) * 0.6);
+    --h-head:calc(var(--h-cat) * 0.6);
+}
+
+.cat {
+    width:var(--w-cat);height:var(--h-cat);
+    bottom:28%;left:50%;
+    bottom:60%;left:50%;
+}
+
+/* head */
+.cat .head {width:var(--w-head);height:var(--h-head);
+    transform:rotate(45deg);
+    background:var(--main);
+    border-top-left-radius:60% 60%;
+    border-bottom-left-radius:50% 50%;
+    border-top-right-radius:50% 50%;
+    border-bottom-right-radius:70% 70%;
+    z-index:1;
+    box-shadow:2px 2px 0 #ffffffaf;
+}
+
+/* face */
+.cat .face {width:var(--w-head);height:var(--h-head);
+}
+.cat .ears {width:100%;height:100%;}
+
+.cat .ear {
+    overflow:hidden;
+    bottom:40%;
+    width:50%;height:60%;
+    background:var(--main);
+    border-top-left-radius:20%;
+    border-top-right-radius:70%;
+    border-bottom-left-radius:70%;
+}
+.cat .ear:first-of-type {left:0;transform:rotateZ(0);
+    animation:cat-ear-l-ani 10s infinite;
+}
+.cat .ear:last-of-type {right:0;transform:rotateY(180deg) rotateZ(0);
+    animation:cat-ear-r-ani 10s ease-in-out infinite;
+}
+
+@keyframes cat-ear-l-ani {
+    0% {transform:rotateZ(0);}
+    5% {transform:rotateZ(20deg);}
+    50% {transform:rotateZ(20deg);}
+    53% {transform:rotateZ(0);}
+    85% {transform:rotateZ(0);}
+    90% {transform:rotateZ(-20deg);}
+    100% {transform:rotateZ(-20deg);}
+}
+@keyframes cat-ear-r-ani {
+    0% {transform:rotateY(180deg) rotateZ(0);}
+    5% {transform:rotateY(180deg) rotateZ(20deg);}
+    50% {transform:rotateY(180deg) rotateZ(20deg);}
+    53% {transform:rotateY(180deg) rotateZ(0);}
+    85% {transform:rotateY(180deg) rotateZ(0);}
+    90% {transform:rotateY(180deg) rotateZ(-20deg);}
+    100% {transform:rotateY(180deg) rotateZ(-20deg);}
+}
+
+.cat .ear::before {
+    content:'';
+    position:absolute;
+    width:100%;height:100%;
+    background:var(--pink);
+    border-top-left-radius:20%;
+    border-top-right-radius:70%;
+    border-bottom-left-radius:70%;
+    transform:scale(0.8);
+}
+.cat .eyes {
+    width:100%;height:100%;
+    z-index:1;
+}
+.cat .eye {
+    width:30%;height:30%;
+    position:absolute;
+    top:30%;
+    background:#ffc300;
+    border-radius:50%;
+}
+.cat .eye:first-of-type {left:10%;}
+.cat .eye:last-of-type {right:10%;}
+.cat .eye::before {
+    content:'';
+    width:80%;height:80%;
+    background:#000;
+    position:absolute;left:10%;top:3%;
+    border-radius:50%;
+    animation:cat-eye-ani 5s infinite;
+}
+
+@keyframes cat-eye-ani {
+    0% {left:10%;}
+    30% {left:10%;}
+    40% {left:0;}
+    50% {left:0;}
+    60% {left:20%;}
+    90% {left:20%;}
+    100% {left:10%;}
+}
+
+.cat .nose {
+    --nose-1:calc(var(--w-head) * 0.05);
+    --nose-2:calc(var(--w-head) * 0.07);
+    width: 0;
+    height: 0;
+    border-left:var(--nose-1) solid transparent;
+    border-right:var(--nose-1) solid transparent;
+    border-top:var(--nose-2) solid var(--pink);
+    z-index:1;
+    left:50%;top:60%;
+    transform:translateX(-50%);
+}
+.cat .nose::before {
+    content:'';
+
+}
+
+/* body */
+.cat .body {
+    border:1px solid red;
+    width:70%;height:50%;
+    top:40%;left:10%;
+}
+
+/* 곡선 바깥 영역을 채색 */
+/* background : transparent, box-shadow:color; */
+/* .cat .body {width: 100px;height: 100px;overflow: hidden;position: relative;} */
+/* .cat .body:before {content: "";display: block;width: 200%;height: 200%;position: absolute;border-radius: 50%;bottom: 0;left: 0;box-shadow: -50px 50px 0 0 red;} */
+/* .cat .body:after {left: auto;right: 0;border-radius: 50px 50px 50px 0;transform: rotate(45deg);} */

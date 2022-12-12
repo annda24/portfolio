@@ -1,0 +1,189 @@
+/* myProject.css */
+#Project {
+    display:grid;
+    grid-template-columns:4rem 1fr 4rem;
+    grid-template-rows:auto 2rem;
+    justify-content:center;
+}
+
+/************************************** project list ********************************/
+
+#Project ol.list {
+    grid-row:-2/-1;
+    grid-column:2/3;
+    display:flex;gap:0.5rem;
+    justify-content:center;align-items:center;
+}
+#Project ol.list li {
+    padding:1rem 0.5rem;box-sizing:border-box;
+    font-size:1.2em;text-align:center;font-weight:700;
+    cursor:pointer;
+    transition:all 400ms ease;
+    opacity:0.5;transform:translateY(0);
+}
+#Project ol.list li:hover,
+#Project ol.list li.on {opacity:1;}
+#Project ol.list li:after {
+    content:'';
+    width:100%;height:2px;
+    position:absolute;left:50%;bottom:10%;
+    background:#000;
+    transition:all 700ms ease;
+    transform:translateX(-50%) scale(0);display:block;
+}
+#Project ol.list li:hover::after {transform:translateX(-50%) scale(1);}
+#Project ol.list li.on::after {display:none;}
+
+/************************************** project list ********************************/
+
+/************************************** project article *****************************/
+
+/* works */
+#Project .articleFrame {
+    grid-row:1/2;
+    grid-column:2/3;
+    width:100%;height:100%;overflow:hidden;
+    position:relative;
+}
+#Project .articleFrame > div {
+    width:700%;height:100%;
+    position:absolute;left:calc( -0 * 100% / 7);
+    display:flex;justify-content:flex-start;
+}
+#Project .articleFrame div article {
+    width:calc(100% / 7);height:100%;
+    display:grid;
+    grid-template-rows:3rem auto;
+    grid-template-columns:auto 15rem;
+    position:relative;
+    transition:all 400ms ease;
+    transform:translate(0,0);opacity:1;    
+}
+    /* title */
+    #Project h2.title {
+        grid-row:1/2;
+        grid-column:1/-1;
+        align-self:end;
+    }
+    #Project h2.title a {
+        font-size:2rem;font-weight:700;padding:0.5rem 0;
+    }
+    #Project h2.title a::before {content:'Project : ';}
+
+    /* preview */
+    #Project #preview {
+        grid-row:2/3;
+        grid-column:1/2;
+        position:relative;
+    }
+    /* 2d */
+    #Project .area3d {
+        width:100%;height:100%;
+        box-sizing:border-box;
+        padding:2vmin;
+        display:grid;
+        grid-gap:1.5vmin;align-items:center;
+        grid-template-rows:100%;
+    }
+    #Project .previewType {
+        position:relative;
+        grid-row:1/-1;
+        display:inline-block;
+        width:100%;height:100%;
+        overflow:hidden;
+        box-shadow:5px 5px 5px #0000002f,-5px 5px 5px #0000002f,5px -5px 5px #0000002f,-5px -5px 5px #0000002f;
+    }
+    #Project .area3d .previewType .plate {height:100%;display:flex;justify-content:flex-start;}
+
+    #Project .area3d .previewType > img {width:100%;object-fit:contain;}
+    #Project .area3d .plate img {height:100%;object-fit:contain;}
+
+    /* only PC; works-1/5/7 */
+    /* only Mobile - works-4 */
+    #Project #works01 .area3d,
+    #Project #works04 .area3d,
+    #Project #works05 .area3d,
+    #Project #works07 .area3d {grid-template-columns:100%;justify-items:center;}
+
+    /* PC+Mobile; works-3,6 */
+    #Project #works03 .area3d {grid-template-columns:30rem auto;}
+    #works03 .Mobile,
+    #works06 .Mobile {grid-column:1/2;}
+    #works03 .PC,
+    #works06 .PC {grid-column:2/3;}
+    
+    /* PC+Tab+Mobile; works-2 */
+    #Project #works02 .area3d {grid-template-columns:30rem 3fr 5fr;}
+    #works02 .Mobile {grid-column:1/2;}
+    #works02 .Tab {grid-column:2/3;}
+    #works02 .PC {grid-column:3/4;}
+
+    /* #Project .previewType.PC {z-index:3;} */
+
+    /* only PC; works-1/5/7 */
+    /* #Project #works01 .PC,#Project #works05 .PC,#Project #works07 .PC {width:96%;height:150%;} */
+
+    /* PC+Tab+Mobile; works-2 */
+    /* #Project #works02 .PC {height:65%;} */
+    /* #Project #works02 .Tab {width:40%;height:40%;} */
+    /* #Project #works02 .Mobile {width:16%;height:56%;} */
+
+    /* PC+Mobile; works-3,6 */
+    /* #Project #works03 .PC,#Project #works06 .PC {height:70%;} */
+    /* #Project #works03 .Mobile,#Project #works06 .Mobile {width:20%;height:70%;} */
+
+    /* only Mobile - works-4 */
+    /* #Project #works04 .Mobile {width:30%;height:98%;left:50%;top:1%;} */
+
+    /* .preveiwType img */
+    /* #Project #preview .plate {display:flex;flex-direction:row;} */
+    #Project article .previewType > img {width:100%;position:absolute;left:0;top:0;}
+    #Project article .previewType .plate img {height:100%;object-fit:contain;}
+    /* #Project article .previewType .plate img:not(:nth-of-type(1)) {display:none;} */
+
+
+    #Project article:not(#works05,#works07).on .PC img {animation:previewAni 10s ease;animation-direction:alternate;}
+    #Project article.on .Tab img {animation:previewAni 7s linear 3s;animation-direction:alternate-reverse;}
+    #Project article:not(#works04, #works06).on .Mobile img {animation:previewAni 8s ease-in-out 3s;animation-direction:alternate;}
+    @keyframes previewAni {
+        /* preview animation */
+        0% {top:0;transform:translateY(0);}
+        10% {top:0;transform:translateY(0);}
+        30% {top:25%;transform:translateY(-25%);}
+        50% {top:50%;transform:translateY(-50%);}
+        0% {top:75%;transform:translateY(-75%);}
+        90% {top:100%;transform:translateY(-100%);}
+        100% {top:100%;transform:translateY(-100%);}
+    }
+
+    /* preview */
+
+    /* explain & lang*/
+    #Project #content {
+        grid-row:2/3;
+        grid-column:2/3;
+        width:100%;
+        display:flex;flex-direction:column;
+        justify-content:flex-end;
+    }
+    #Project #content ul {
+        width:96%;
+        padding:1rem;margin-bottom:1.4rem;box-sizing:border-box;
+        font-size:1.1rem;line-height:1.4;
+        background:#fff;
+        box-shadow:4px 8px 4px #3333336f;
+    }
+    #Project #content ul li.title {font-weight:700;width:100%;margin:-5px 0 5px -5px;}
+    #Project #content ul li:not(.title) {font-size:0.9em;padding:0.2em 0.5rem;}
+    #Project #content .lang {
+        display:flex;flex-wrap:wrap;gap:5px;
+    }
+    #Project #content .lang li:not(.title) {background:#eeeeee;border-radius:0.9rem;}
+
+/************************************** project article *****************************/
+
+/* 임시 설정 */
+/* #Project #preview div {border:5px solid transparent;}
+#Project #preview .PC {border-color:red;}
+#Project #preview .Tab {border-color:green;}
+#Project #preview .Mobile {border-color:blue;} */

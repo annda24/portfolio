@@ -1,0 +1,54 @@
+/* profile.css */
+#Profile {
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    grid-template-columns:1fr 1.5fr;
+    text-align:center;
+    align-content:center;
+    justify-content:center;
+}
+#Profile > a {
+    display:block;
+    border-radius:50%;overflow:hidden;
+    grid-row:1/-1;grid-column:1/2;
+    width:12rem;height:12rem;
+    justify-self:right;
+    align-self:center;
+    border:10px solid #a1b7e4;
+    transition:all 500ms ease;
+    position:relative;
+}
+#Profile > a img {width:100%;height:100%;border-radius:50%;}
+#Profile > a:hover {border-color:#668dc0;}
+#Profile > a::after {
+    content:'Github 바로가기';
+    width:100%;height:5rem;
+    position:absolute;left:50%;bottom:0;
+    transform:translateX(-50%) translateY(100%);
+    font-size:1.5rem;color:#fff;background:#668dc0af;
+    text-align:center;line-height:5rem;
+    transition:all 400ms ease;
+    opacity:0;
+}
+#Profile > a:hover::after {
+    bottom:7rem;opacity:1;
+}
+
+#Profile dl {
+    grid-row:1/-1;grid-column:2/3;
+    display:inline-flex;flex-direction:row;flex-wrap:wrap;gap:1rem;
+    justify-content:center;align-content:center;align-items:center;
+    font-size:1.5rem;
+}
+#Profile dl dt {font-weight:700;text-align:right;width:6rem;}
+#Profile dl dd {text-align:left;width:calc(100% - 7rem);}
+#Profile dl dd:last-of-type ul {
+    width:100%;
+    display:flex;flex-wrap:wrap;gap:0.3rem;
+}
+#Profile dl dd:last-of-type li {
+    padding:0.25rem 0.5rem;
+    border-radius:1rem;
+    background:#ffffffac;
+    font-size:1.1rem;
+}

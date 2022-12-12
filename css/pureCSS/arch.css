@@ -1,0 +1,69 @@
+body {
+    width:100vw;height:100vh;overflow:hidden;
+    display:flex;justify-content:center;align-items:center;
+    padding:0;margin:0;
+}
+#arch {
+    position:relative;
+    width:100vmin;height:100vmin;
+    display:flex;justify-content:center;align-items:center;
+    cursor:pointer;background:#ffe6bb;
+    transform:scale(1) perspective(300vmin) rotateX(77deg) rotateZ(40deg) translateX(0) translateY(0) translateZ(-22vmin);
+}
+
+#arch *, #arch *::after, #arch *::before {
+    margin:0;padding:0;
+    box-sizing:border-box;
+    user-select:none;
+    transform-style:preserve-3d;
+    -webkit-tap-highlight-color:transparent;
+}
+
+span {
+    width:var(--leng_X);height:var(--leng_Y);
+    transform:translateZ(var(--pos_Z));
+    --wall-b-thk:2.5vmin;
+    --wall-b-p-thk:3.5vmin;
+}
+span .face {
+    display:block;
+}
+.front {
+    width:var(--leng_X);height:var(--leng_Z);
+    transform-origin:top left;
+    transform:rotateX(-90deg) translateZ(var(--leng_Y)) translateY(calc(-1 * var(--leng_Z)));
+}
+.back {
+    width:var(--leng_X);height:var(--leng_Z);
+    transform-origin:top center;
+    transform:rotateX(-90deg) rotateY(180deg) translateY(calc(-1 * var(--leng_Z)));
+}
+.right {
+    width:var(--leng_Y);height:var(--leng_Z);
+    transform-origin:top left;
+    transform:rotateY(90deg) rotateZ(-90deg) translateZ(var(--leng_X)) translateX(calc(-1 * var(--leng_Y))) translateY(calc(-1 * var(--leng_Z)));
+}
+.left {
+    width:var(--leng_Y);height:var(--leng_Z);
+    transform-origin:top left;
+    transform:rotateY(-90deg) rotateZ(90deg) translateY(calc(-1 * var(--leng_Z)));
+}
+.top {
+    width:var(--leng_X);height:var(--leng_Y);
+    transform-origin:top left;
+    transform:translateZ(var(--leng_Z));
+}
+.bottom {
+    width:var(--leng_X);height:var(--leng_Y);
+    transform-origin:top center;
+    transform:rotateY(180deg);
+}
+
+/* span */
+.floor {
+    position:absolute;left:0;bottom:0;
+    --leng_X:100vmin;--leng_Y:100vmin;--leng_Z:3vmin
+}
+.floor div:not(.top, .bottom) {background:#555;}
+.floor .top {background:#888;}
+.floor .bottom {background:#333;}

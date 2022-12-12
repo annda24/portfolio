@@ -1,0 +1,8 @@
+/* section */
+@import url(Home.css);
+@import url(Profile.css);
+@import url(Project.css);
+
+/* basic setting */
+@import url(reset.css);
+@import url(common.css);

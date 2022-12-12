@@ -1,0 +1,71 @@
+/* common.css */
+/************************************** import **************************************/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/************************************** import **************************************/
+
+/************************************** layout **************************************/
+
+body{
+    width:100vw;height:100%;
+    font-size:14px;line-height:1;
+    font-family:'Noto Sans KR',sans-serif;
+    overflow-x:hidden;
+    background:#cdddff;
+    color:#304a6e;
+}
+#Container {width:100%;height:100%;}
+section {
+    position:relative;
+    width:100%;height:100vh;box-sizing:border-box;
+    padding:2vw;
+    overflow:hidden;
+}
+#Home {color:#668dc0;}
+/* #Profile {background:#d39e45;} */
+/* #Project {background:#f3d1c3;} */
+#Menu {position:fixed;right:0;top:0;height:3rem;box-sizing:border-box;}
+
+/************************************** layout **************************************/
+
+/************************************** sideMenu **************************************/
+#Menu .index {
+    width:100%;height:100%;
+    display:flex;flex-direction:row;
+    justify-content:end;
+}
+#Menu .index li {padding:0 2rem;box-sizing:border-box;line-height:3rem;cursor:pointer;text-align:center;}
+#Menu .index li.on,
+#Menu .index li:hover {background:#ccccccaf;}
+
+/************************************** sideMenu **************************************/
+
+/************************************** class effect **************************************/
+
+#Project .articleFrame article {opacity:1;transition:opacity 600ms linear;}
+#Project .articleFrame .hide   {opacity:0 !important;z-index:-1;}
+#Project .articleFrame .left   {transform:translate(-70%,0) !important;}
+#Project .articleFrame .right  {transform:translate(70%,0) !important;}
+#Project .articleFrame .top    {transform:translate(0,-70%) !important;}
+#Project .articleFrame .bottom {transform:translate(0,70%) !important;}
+
+/************************************** class effect **************************************/
+
+a {text-decoration:none;color:inherit;display:block;}
+
+/* scrollBar */
+body::-webkit-scrollbar {
+    background:transparent;
+    width:15px;overflow:auto;
+}
+body::-webkit-scrollbar-thumb {
+    background:#ccccccaf;
+    border-radius:8px;
+}
+body::-webkit-scrollbar-track {
+    background:#ffffff5f;
+}

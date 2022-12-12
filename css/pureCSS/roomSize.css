@@ -1,0 +1,360 @@
+/* roomSize.css */
+/* Generic */
+.house {position:absolute;width:75vmin;height:75vmin;}
+.house .face {position:absolute;box-sizing:border-box;}
+
+/*** form *******************************************************************************************/
+
+.house div {
+    width:var(--leng_X);height:var(--leng_Y);
+    transform:translateZ(var(--pos_Z));
+    --wall-b-thk:2.5vmin;
+    --wall-b-p-thk:3.5vmin;
+    --floor-thk:1vmin;
+}
+.house div>.front {
+    width:var(--leng_X);height:var(--leng_Z);
+    transform-origin:top left;
+    transform:rotateX(-90deg) translateZ(var(--leng_Y)) translateY(calc(-1 * var(--leng_Z)));
+}
+.house div>.back {
+    width:var(--leng_X);height:var(--leng_Z);
+    transform-origin:top center;
+    transform:rotateX(-90deg) rotateY(180deg) translateY(calc(-1 * var(--leng_Z)));
+}
+.house div>.right {
+    width:var(--leng_Y);height:var(--leng_Z);
+    transform-origin:top left;
+    transform:rotateY(90deg) rotateZ(-90deg) translateZ(var(--leng_X)) translateX(calc(-1 * var(--leng_Y))) translateY(calc(-1 * var(--leng_Z)));
+}
+.house div>.left {
+    width:var(--leng_Y);height:var(--leng_Z);
+    transform-origin:top left;
+    transform:rotateY(-90deg) rotateZ(90deg) translateY(calc(-1 * var(--leng_Z)));
+}
+.house div>.top {
+    width:var(--leng_X);height:var(--leng_Y);
+    transform-origin:top left;
+    transform:translateZ(var(--leng_Z));
+}
+.house div>.bottom {
+    width:var(--leng_X);height:var(--leng_Y);
+    transform-origin:top center;
+    transform:rotateY(180deg);
+}
+
+/*** form *******************************************************************************************/
+
+/*** h-light / h-shadow *****************************************************************************/
+
+.house .h-shadow {position:absolute;top:0;left:0;width:100%;height:100%;}
+.house .h-lights {position:absolute;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);width:45vmin;height:45vmin;}
+
+.house .h-light:nth-of-type(1) {bottom:5vmin;right:0;width:14vmin;height:14vmin;border-radius:50%;}
+.house .h-light:nth-of-type(2) {bottom:18vmin;right:-1vmin;width:2vmin;height:12vmin;border-radius:50%;transform:rotateZ(-50deg);}
+.house .h-light:nth-of-type(3) {bottom:-2vmin;right:17vmin;width:5vmin;height:12vmin;border-radius:50%;transform:rotateZ(-50deg);}
+.house .h-light:nth-of-type(4) {bottom:5vmin;left:8vmin;width:75vmin;height:4vmin;transform-origin:top left;transform:skewX(58deg);}
+.house .h-light:nth-of-type(6) {bottom:14vmin;right:2vmin;width:8vmin;height:40vmin;transform-origin:bottom left;transform:skewY(49deg);}
+
+.house .h-light:nth-of-type(3)::before, .house .h-light:nth-of-type(3)::after {content:'';position:absolute;width:200%;top:-6vmin;height:400%;}
+.house .h-light:nth-of-type(3)::before {right:-50%;transform-origin:top right;transform:rotateZ(15deg);}
+.house .h-light:nth-of-type(3)::after {left:-50%;transform-origin:top left;transform:rotateZ(-15deg);}
+
+/*** h-light / h-shadow *****************************************************************************/
+
+/*** floor_top-light ********************************************************************************/
+
+.house .floor .top .light:nth-of-type(1) {position:absolute;width:100%;height:100%;}
+.house .floor .top .light:nth-of-type(2) {position:absolute;width:100%;height:100%;}
+.house .floor .top .light:nth-of-type(3) {position:absolute;width:100%;height:100%;}
+.house .floor .top .light:nth-of-type(4) {position:absolute;width:100%;height:100%;}
+/* 
+.house .floor .top .light:nth-of-type(5) {position:absolute;bottom:3.5vmin;left:4.5vmin;width:6vmin;height:2vmin;border-radius:50%;transform:rotateZ(40deg);}
+.house .floor .top .light:nth-of-type(6) {position:absolute;bottom:3vmin;left:0.5vmin;width:4vmin;height:2vmin;border-radius:50%;transform:rotateZ(40deg);}
+.house .floor .top .light:nth-of-type(7) {position:absolute;bottom:0;left:0;width:100%;height:100%;}
+.house .floor .top .light:nth-of-type(8) {position:absolute;bottom:5vmin;left:10vmin;width:6vmin;height:4vmin;border-radius:50%;transform:rotateZ(40deg);}
+*/
+
+.house .floor .top .light:nth-of-type(7)::before {content:'';position:absolute;width:20%;height:100%;}
+.house .floor .top .light:nth-of-type(7)::after {content:'';position:absolute;width:100%;height:20%;}
+
+/*** floor_top-light ********************************************************************************/
+
+/*** Structure **************************************************************************************/
+/*** .floor *****************************************************************************************/
+
+.house .floor {/* floor : 75*75*1 */
+    --leng_X:75vmin;--leng_Y:75vmin;--leng_Z:var(--floor-thk);
+    position:absolute;left:0;top:0;
+}
+
+/*** wall-a *****************************************************************************************/
+
+.house .wall.a-l {/* wall-a-l : 77.5*2.5*5 */
+    --leng_X:77.5vmin;--leng_Y:var(--wall-b-thk);--leng_Z:5vmin;--pos_Z:0;
+    position:absolute;left:0;bottom:calc(-1 * var(--leng_Y));
+}
+.house .wall.a-r {/* wall-a-r : 2.5*77.5*5  */
+    --leng_X:var(--wall-b-thk);--leng_Y:77.5vmin;--leng_Z:5vmin;--pos_Z:0;
+    position:absolute;right:calc(-1 * var(--leng_X));top:0;
+}
+
+.house .wall.a-r .top::before {content:'';position:absolute;width:100%;height:30%;top:0;}
+
+/*** wall-b *****************************************************************************************/
+
+.house .wall.b-l {/* wall-b-l : 2.5*75*55  */
+    --leng_X:var(--wall-b-thk);--leng_Y:75vmin;--leng_Z:55vmin;--pos_Z:var(--floor-thk);
+    position:absolute;left:0;top:0;
+}
+.house .wall.b-r {/* wall-b-r : 75*2.5*55 */
+    --leng_X:75vmin;--leng_Y:var(--wall-b-thk);--leng_Z:55vmin;--pos_Z:var(--floor-thk);
+    position:absolute;left:0;top:0;
+}
+
+.house .wall.b-l .right::before,
+.house .wall.b-r .front::before {content:'';position:absolute;width:100%;height:100%;}
+.house .wall.b-l .right::after {content:'';position:absolute;bottom:0;width:calc(5vmin - 1vmin);height:100%;}
+.house .wall.b-r .front::after {content:'';position:absolute;bottom:0;width:100%;height:calc(5vmin - 1vmin);}
+
+/*** Structure **************************************************************************************/
+
+/*** Interiror **************************************************************************************/
+
+/*** partition ***/
+.house .partition {/* partition : 1*45*48 */
+    --leng_X:calc(var(--wall-b-p-thk) - var(--wall-b-thk));--leng_Y:45vmin;--leng_Z:48vmin;--pos_Z:var(--floor-thk);
+    position:absolute;left:var(--wall-b-thk);bottom:calc(50% - var(--leng_Y) / 2);
+    transform:translateZ(var(--pos_Z));
+}
+
+.house .partition .right::before,
+.house .partition .top::before {content:'';position:absolute;width:100%;height:100%;bottom:0;}
+.house .partition .right::after {content:'';position:absolute;bottom:0;left:5%;width:90%;height:25%;}
+.house .partition .bottom::before {content:'';position:absolute;top:0;right:0;width:4vmin;height:100%;}
+
+/*** door-c ***/
+.house .door-c {/* door-c : 23*1*40 */
+    --leng_X:23vmin;--leng_Y:1vmin;--leng_Z:40vmin;--pos_Z:var(--floor-thk);
+    position:absolute;left:10vmin;top:var(--wall-b-thk);
+    transform:translateZ(var(--pos_Z));
+}
+.house .door-c::before {/* shadow; bottom */content:'';position:absolute;width:100%;height:170%;}
+
+/* door */
+.house .door {/* door : 21*0.5*38 */
+    --leng_X:21vmin;--leng_Y:0.5vmin;--leng_Z:39vmin;--pos_Z:0;
+    position:absolute;left:1vmin;top:-0.4vmin;
+}
+.house .door .front::after {/* 문고리 */content:'';position:absolute;top:50%;right:1.2vmin;width:3vmin;height:0.8vmin;}
+.house .door .front::before {/* light / shadow */content:'';position:absolute;width:100%;height:100%;}
+
+/* doorFrame */
+.house .doorFrame-l, .house .doorFrame-r {/* doorFrame-l/r : 1*1*40 */
+    --leng_X:1vmin;--leng_Y:1vmin;--leng_Z:40vmin;--pos_Z:0;
+    position:absolute;left:0;top:0;
+}
+.house .doorFrame-r {right:0;left:auto;}
+.house .doorFrame-t {/* doorFrame-t : 23*1*1 */
+    --leng_X:21vmin;--leng_Y:1vmin;--leng_Z:1vmin;--pos_Z:39vmin;
+    position:absolute;left:1vmin;top:0;
+}
+
+/*** Interiror **************************************************************************************/
+
+/*** Funiture ***************************************************************************************/
+
+/*** sofa ***/
+.house .sofa-c {/* sofa-c : 15*40 */
+    --leng_X:15vmin;--leng_Y:40vmin;--pos_Z:var(--floor-thk);
+    position:absolute;right:2vmin;bottom:calc(50% - var(--leng_Y)/2);
+}
+.house .sofa-c::before {/* sofa-shadow */content:'';position:absolute;top:-10%;left:-10%;width:120%;height:115%;}
+
+.house .sofa-b {/* sofa-b : 15*35*7.5 */
+    --leng_X:15vmin;--leng_Y:35vmin;--leng_Z:7.5vmin;--pos_Z:0;
+    position:absolute;left:0;top:var(--wall-b-thk);
+}
+
+.house .sofa-r {top:0;}
+.house .sofa-l,
+.house .sofa-r {/* sofa-l/r : 15*2.5*11.3 */
+    --leng_X:15vmin;--leng_Y:2.5vmin;--leng_Z:11.3vmin;--pos_Z:0;
+    position:absolute;left:0;bottom:0;
+}
+
+.house .sofa-t {/* sofa-t : 2.8*35*16.25 */
+    --leng_X:2.8vmin;--leng_Y:35vmin;--leng_Z:16.25vmin;--pos_Z:0;
+    position:absolute;right:0;top:var(--wall-b-thk);
+    transform-origin:right;transform:rotateY(7deg);
+}
+
+.house .sofa-b .top::before, .house .sofa-b .left::before,
+.house .sofa-l .top::before, .house .sofa-l .left::before,
+.house .sofa-r .top::before, .house .sofa-r .left::before,
+.house .sofa-t .top::before, .house .sofa-t .left::before {content:'';position:absolute;width:100%;height:100%;}
+
+/*** table ***/
+.house .table-c {/* table : 30*30 */
+    --leng_X:30vmin;--leng_Y:30vmin;--pos_Z:var(--floor-thk);
+    position:absolute;left:calc(50% - var(--leng_X) / 2);top:calc(50% - var(--leng_Y) / 2);
+}
+.house .table-shadow {/* table-shadow */position:absolute;width:100%;height:100%;border-radius:10%;transform:translateZ(0);}
+
+.house .table-t{/* table-t : 30*30*1 */
+    --leng_X:30vmin;--leng_Y:30vmin;--leng_Z:1vmin;--pos_Z:7vmin;
+    position:absolute;left:0;top:0;
+}
+.house .table-t .top::before {content:'';position:absolute;width:100%;height:100%;}
+
+.house .table-p {/* table-p : 2*2*7 */
+    --leng_X:2vmin;--leng_Y:2vmin;--leng_Z:7vmin;--pos_Z:0;
+    position:absolute;
+}
+.house .table-p:nth-of-type(2) {left:2vmin;top:2vmin;}
+.house .table-p:nth-of-type(3) {right:2vmin;top:2vmin;}
+.house .table-p:nth-of-type(4) {left:2vmin;bottom:2vmin;}
+.house .table-p:nth-of-type(5) {right:2vmin;bottom:2vmin;}
+
+.house .table-t .bottom::before {content:'';position:absolute;width:100%;height:100%;top:0;right:0;}
+.house .table-p .bottom::before {content:'';position:absolute;width:150%;height:150%;top:0;right:0;border-radius:10%;transform:translateZ(-0.1vmin);}
+
+/*** TV ***/
+.house .tv {/*TV : 1*40*20 */
+    --leng_X:1vmin;--leng_Y:40vmin;--leng_Z:20vmin;--pos_Z:20vmin;
+    position:absolute;left:var(--wall-b-p-thk);bottom:calc(50% - var(--leng_Y) / 2);
+}
+.house .tv .right::before {content:'';position:absolute;width:100%;height:100%;}
+.house .tv .left::before {content:'';position:absolute;width:100%;height:120%;bottom:-10%;}
+
+/*** sound bar ***/
+.house .speaker-r {top:10vmin;}
+.house .speaker-l,
+.house .speaker-r {/* speaker : 2*3.75*20 */
+    --leng_X:2vmin;--leng_Y:3.75vmin;--leng_Z:20vmin;--pos_Z:20vmin;
+    position:absolute;left:var(--wall-b-thk);bottom:10vmin;
+}
+.house .speaker-l .back::before,
+.house .speaker-r .front::before { /* light */content:'';position:absolute;width:100%;height:100%;}
+.house .speaker-l .left::before,
+.house .speaker-r .left::before { /* shadow */content:'';position:absolute;top:-5%;left:-10%;width:120%;height:110%;}
+
+/*** shelf ***/
+.house .shelf-t,
+.house .shelf-b {/* shelf-t/b : 5*33*0.5 */
+    --leng_X:5vmin;--leng_Y:33vmin;--leng_Z:0.5vmin;--pos_Z:43vmin;
+    position:absolute;left:var(--wall-b-p-thk);bottom:calc(50% - 33vmin/2);
+}
+.house .shelf-b {--pos_Z:14vmin;}
+
+.house .shelf-r {/* shelf-r : 28*5*0.5 */
+    --leng_X:28vmin;--leng_Y:5vmin;--leng_Z:0.5vmin;--pos_Z:17vmin;
+    position:absolute;right:5vmin;top:var(--wall-b-thk);
+}
+
+.house .shelf-t .left::before {content:'';position:absolute;width:100%;height:300%;}
+.house .shelf-b .left::before,
+.house .shelf-r .back::before {content:'';position:absolute;width:100%;height:500%;}
+
+.house .shelf-t .top::before, .house .shelf-t .bottom::before,
+.house .shelf-b .top::before, .house .shelf-b .bottom::before,
+.house .shelf-r .top::before, .house .shelf-r .bottom::before {content:'';position:absolute;width:100%;height:100%;}
+
+/*** Funiture ***************************************************************************************/
+
+/*** Props ******************************************************************************************/
+
+/*** poster ***/
+.house .poster-l,
+.house .poster-r {/* poster : 12.5*.1.3*17.5 */
+    --leng_X:12.5vmin;--leng_Y:1.3vmin;--leng_Z:17.5vmin;--pos_Z:23.5vmin;
+    position:absolute;right:20.5vmin;top:var(--wall-b-thk);
+}
+.house .poster-r {right:5vmin;}
+
+.house .poster-l .front::before,
+.house .poster-r .front::before {content:'';position:absolute;top:0;left:0;width:100%;height:100%;}
+
+/*** tablet ***/
+.house .tablet {/* tablet : 7*10*0.2 */
+    --leng_X:7vmin;--leng_Y:10vmin;--leng_Z:0.2vmin;--pos_Z:9vmin;
+    position:absolute;right:35%;bottom:50%;
+    transform:translateZ(var(--pos_Z)) rotateZ(14deg);
+}
+.house .tablet .top::before {content:'';width:100%;height:100%;position:absolute;}
+/*** phone ***/
+.house .phone {/* phone : 4.8*2.5*0.2 */
+    --leng_X:4.8vmin;--leng_Y:2.5vmin;--leng_Z:0.2vmin;--pos_Z:9vmin;
+    position:absolute;right:30%;bottom:40%;
+    transform:translateZ(var(--pos_Z)) rotateZ(-17deg);
+}
+.house .phone .top::before {content:'';width:100%;height:100%;position:absolute;}
+/*** book ***/
+.house .books {/* books : 28*5 */
+    --leng_X:28vmin;--leng_Y:5vmin;--pos_Z:17.5vmin;
+    position:absolute;top:var(--wall-b-thk);right:5vmin;
+}
+
+.house .book {/* book : 0.5*3*4 */
+    --leng_X:0.5vmin;--leng_Y:3vmin;--leng_Z:4vmin;--pos_Z:0;
+    position:absolute;top:0.5vmin;
+}
+.house .book .front::before,
+.house .book .left::before,
+.house .book .right::before,
+.house .book .top::before {content:'';position:absolute;width:100%;height:100%;}
+
+/* left:30~70% : 5.6vmin ~ 19.6vmin */
+.house .book:nth-of-type(1) {left:5.6vmin;transform:rotateZ(10deg) rotateY(3deg);transform-origin:left;}
+.house .book:nth-of-type(2) {left:6.4vmin;transform:rotateZ(6deg);}
+.house .book:nth-of-type(3) {left:7.2vmin;transform:rotateZ(5deg) rotateY(-1deg);}
+.house .book:nth-of-type(4) {left:7.9vmin;transform:rotateZ(10deg) rotateY(-1deg);transform-origin:left;}
+.house .book:nth-of-type(5) {left:10vmin;transform:rotateZ(10deg);transform-origin:left;}
+.house .book:nth-of-type(6) {left:11.75vmin;transform:rotateZ(5deg) rotateY(4deg);}
+.house .book:nth-of-type(7) {left:12.5vmin;transform:rotateZ(10deg) rotateY(4deg);transform-origin:left;}
+.house .book:nth-of-type(8) {left:13.4vmin;transform:rotateZ(10deg) rotateY(2deg);transform-origin:left;}
+.house .book:nth-of-type(9) {left:14.1vmin;transform:rotateZ(10deg) rotateY(1deg);transform-origin:left;}
+.house .book:nth-of-type(10) {left:14.6vmin;transform:rotateZ(5deg);}
+.house .book:nth-of-type(11) {left:15.3vmin;transform:rotateZ(10deg);transform-origin:left;}
+.house .book:last-of-type {right:17%;top:1.2vmin;transform:rotateY(-90deg) rotateX(14deg);transform-origin:left;}
+
+/*** photo ***/
+.house .photos {/* photo : 5*33; shelf-b 위의 영역 */
+    --leng_X:5vmin;--leng_Y:33vmin;--pos_Z:14.5vmin;
+    position:absolute;left:var(--wall-b-p-thk);top:calc(50% - 33vmin/2);
+}
+.house .photo {/* photo : 0.2*5.5*3 */
+    --leng_X:0.4vmin;--leng_Y:8vmin;--leng_Z:5vmin;--pos_Z:0;
+    position:absolute;left:30%;
+}
+.house .photo:nth-of-type(1) {/* left */bottom:20%;transform:rotateZ(-15deg);}
+.house .photo:nth-of-type(2) {/* right */top:20%;transform:rotateZ(5deg);}
+
+.house .photo .front::before,
+.house .photo .back::before,
+.house .photo .right::before,
+.house .photo .top::before {content:'';position:absolute;width:100%;height:100%;}
+.house .photo .bottom::before {content:'';position:absolute;right:-100%;width:300%;height:100%;}
+
+/*** boxes ***/
+.house .boxes {/* boxes : 5*33; shelf-t 위의 영역 */
+    --leng_X:5vmin;--leng_Y:33vmin;--pos_Z:43.5vmin;
+    position:absolute;
+    left:var(--wall-b-p-thk);bottom:calc(50% - 33vmin/2);
+}
+
+.house .box {/* box : 2.5*3.3*2.7 */
+    --leng_X:2.5vmin;--leng_Y:3.3vmin;--leng_Z:2.7vmin;--pos_Z:0;
+    position:absolute;
+}
+.house .box:nth-of-type(1) {top:20%;left:1.2vmin;transform:rotateZ(10deg);}
+.house .box:nth-of-type(2) {top:32%;left:0;}
+.house .box:nth-of-type(3) {top:66%;left:1vmin;transform:rotateZ(-12deg);}
+
+.house .box .front::before,
+.house .box .back::before,
+.house .box .right::before,
+.house .box .top::before {content:'';position:absolute;width:100%;height:100%;}
+.house .box .bottom::before {content:'';position:absolute;right:-50%;width:150%;height:100%;}
+
+/*** Props ******************************************************************************************/
