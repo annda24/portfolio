@@ -66,7 +66,7 @@ export default [
                 "img/project preview/comong.jpg"
             ]
         },
-        "link":{"main":"#","introduce":"#1","index":"#2"},
+        "link":{"main":"https://annda24.github.io/comong","introduce":"#1","index":"#2"},
         "explain":["창작 앱 코딩"],
         "lang":["HTML","CSS","Java Script"]
     },{"index":"07","name":"Pure CSS",
